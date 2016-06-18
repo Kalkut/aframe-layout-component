@@ -274,8 +274,13 @@
 	 * @param {array} positions - Array of coordinates.
 	 */
 	function setPositions (els, positions) {
+	  if (!positions || positions.constructor !== Array) return;
+	  
 	  els.forEach(function (el, i) {
 	    var position = positions[i];
+	    
+	    if (!position || position.constructor !== Array || position.length < 3) return;
+
 	    el.setAttribute('position', {
 	      x: position[0],
 	      y: position[1],
